@@ -1,0 +1,9 @@
+py-cord >= 2.0.0
+audioop-lts; python_version>='3.13'
+rich
+click
+python-dotenv
+httpx
+wavelink
+sqlmodel
+certifi
