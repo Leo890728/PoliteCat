@@ -1,0 +1,397 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2023-04-02 18:21+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en-US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: dpy-template 1.0.0\n"
+
+#: bot\cogs\util\ai_chat.py:22
+msgid "對話"
+msgstr "Chat"
+
+#: bot\cogs\util\ai_chat.py:256
+msgid "對話儀表板"
+msgstr "chat-dashboard"
+
+#: bot\cogs\util\ai_chat.py:257
+msgid "顯示AI對話設定儀表板"
+msgstr "Show AI chat settings dashboard"
+
+#: bot\cogs\util\drawing.py:36
+msgid "抽籤"
+msgstr "draw"
+
+#: bot\cogs\util\drawing.py:67 bot\cogs\util\drawing.py:68
+msgid "建立抽籤盒"
+msgstr "create-drawing-box"
+
+#: bot\cogs\util\drawing.py:73
+msgid "抽籤盒名稱"
+msgstr "drawing-box-name"
+
+#: bot\cogs\util\drawing.py:75 bot\cogs\util\drawing.py:98
+#: bot\cogs\util\drawing.py:134
+msgid "抽籤盒的名稱"
+msgstr "name-of-the-drawing-box"
+
+#: bot\cogs\util\drawing.py:90
+msgid "加入抽籤項"
+msgstr "add-draw-item"
+
+#: bot\cogs\util\drawing.py:91
+msgid "在抽籤盒加入抽籤項"
+msgstr "Add an item to the drawing box"
+
+#: bot\cogs\util\drawing.py:96 bot\cogs\util\drawing.py:133
+msgid "抽籤盒"
+msgstr "drawing-box"
+
+#: bot\cogs\util\drawing.py:104
+msgid "抽籤項"
+msgstr "drawing-item"
+
+#: bot\cogs\util\drawing.py:106
+msgid "加入抽籤盒的籤"
+msgstr "Entry to add to the drawing box"
+
+#: bot\cogs\util\drawing.py:127 bot\cogs\util\drawing.py:128
+msgid "開始抽籤"
+msgstr "start-drawing"
+
+#: bot\cogs\util\info.py:12
+msgid "雜項"
+msgstr "Miscellaneous"
+
+#: bot\cogs\util\info.py:14
+msgid "上線時間"
+msgstr "uptime"
+
+#: bot\cogs\util\info.py:15
+msgid "查看機器人上線時間"
+msgstr "Check bot uptime"
+
+#: bot\cogs\util\info.py:26
+msgid "機器人上線時間"
+msgstr "bot up time"
+
+#: bot\cogs\util\info.py:28
+#, python-format
+msgid "{days:02d}天 {hours:02d}小時 {minutes:02d}分鐘 {seconds:02d}秒"
+msgstr "{days:02d}d {hours:02d}h {minutes:02d}m {seconds:02d}s"
+
+#: bot\cogs\util\player.py:24
+msgid "播放器"
+msgstr "Player"
+
+#: bot\cogs\util\player.py:87
+msgid "音樂"
+msgstr "Music"
+
+#: bot\cogs\util\player.py:111
+msgid "正在播放"
+msgstr "Now playing"
+
+#: bot\cogs\util\player.py:114
+msgid "時長"
+msgstr "Duration"
+
+#: bot\cogs\util\player.py:120
+#, python-format
+msgid "`此歌曲由 {source} 推薦`"
+msgstr "`This track was recommended via {source}`"
+
+#: bot\cogs\util\player.py:126
+#, python-format
+msgid "下一首 » {next_track_title}"
+msgstr "Next track » {next_track_title}"
+
+#: bot\cogs\util\player.py:144
+msgid "播放"
+msgstr "play"
+
+#: bot\cogs\util\player.py:145
+msgid "播放音樂、串流或播放清單"
+msgstr "Play a music track, stream, or playlist"
+
+#: bot\cogs\util\player.py:150
+msgid "搜尋詞或輸入網址"
+msgstr "search-term-or-url"
+
+#: bot\cogs\util\player.py:152
+msgid "想播放的歌曲或播放列表（可以是名稱、網址，或搜尋詞）"
+msgstr "The song or playlist you want to play (can be a name, URL, or search term)"
+
+#: bot\cogs\util\player.py:157
+msgid "推薦播放清單"
+msgstr "recommended-playlist"
+
+#: bot\cogs\util\player.py:159
+msgid "啟用或停用自動推薦播放列表功能（預設為停用）"
+msgstr "Enable or disable automatic recommendations for the queue (default: disabled)"
+
+#: bot\cogs\util\player.py:206
+msgid "跳過"
+msgstr "skip"
+
+#: bot\cogs\util\player.py:207
+msgid "跳過目前曲目"
+msgstr "Skip the current track"
+
+#: bot\cogs\util\player.py:220
+msgid "待播清單"
+msgstr "queue"
+
+#: bot\cogs\util\player.py:221
+msgid "顯示待播清單"
+msgstr "Show the track queue"
+
+#: bot\cogs\util\player.py:295
+msgid "調音器"
+msgstr "equalizer"
+
+#: bot\cogs\util\player.py:296
+msgid "Set the filter to a other style"
+msgstr "Set the filter to another style"
+
+#: bot\cogs\util\player.py:301
+msgid "調音模式"
+msgstr "equalizer-mode"
+
+#: bot\cogs\util\player.py:303
+msgid "更改調音模式"
+msgstr "Change the equalizer mode"
+
+#: bot\cogs\util\player.py:452
+msgid "繼續-暫停"
+msgstr "pause-resume"
+
+#: bot\cogs\util\player.py:453
+msgid "繼續或暫停目前曲目"
+msgstr "Pause or resume the current track"
+
+#: bot\cogs\util\player.py:466
+msgid "音量"
+msgstr "volume"
+
+#: bot\cogs\util\player.py:467
+msgid "更改播放音量"
+msgstr "Change the playback volume"
+
+#: bot\cogs\util\player.py:472
+msgid "音量比"
+msgstr "volume-ratio"
+
+#: bot\cogs\util\player.py:474
+msgid "音量比(%) (預設 30%)"
+msgstr "Volume ratio (%) (default: 30%)"
+
+#: bot\cogs\util\player.py:488
+msgid "歌詞"
+msgstr "lyrics"
+
+#: bot\cogs\util\player.py:489
+msgid "正在播放曲目的歌詞"
+msgstr "Lyrics of the currently playing track"
+
+#: bot\cogs\util\player.py:519
+msgid "中斷連接"
+msgstr "disconnect"
+
+#: bot\cogs\util\player.py:520
+msgid "離開語音頻道"
+msgstr "Leave the voice channel"
+
+#: bot\cogs\util\radio.py:191 bot\cogs\util\radio.py:224
+msgid "收音機"
+msgstr "radio"
+
+#: bot\cogs\util\radio.py:225
+msgid "播放廣播"
+msgstr "Play broadcast"
+
+#: bot\cogs\util\radio.py:230
+msgid "國家"
+msgstr "country"
+
+#: bot\cogs\util\radio.py:232
+msgid "廣播的來源國家"
+msgstr "Country of the broadcast source"
+
+#: bot\cogs\util\radio.py:238
+msgid "區域"
+msgstr "region"
+
+#: bot\cogs\util\radio.py:240
+msgid "廣播的來源區域"
+msgstr "Region of the broadcast source"
+
+#: bot\cogs\util\react.py:43 bot\cogs\util\react.py:206
+#: bot\cogs\util\react.py:291
+msgid "反應"
+msgstr "reaction"
+
+#: bot\cogs\util\react.py:96
+msgid "反應指令"
+msgstr "Reaction command"
+
+#: bot\cogs\util\react.py:171
+msgid "新增反應"
+msgstr "add-reaction"
+
+#: bot\cogs\util\react.py:172
+msgid "新增機器人對群組訊息的反應"
+msgstr "Add a bot reaction to group messages"
+
+#: bot\cogs\util\react.py:177 bot\cogs\util\react.py:252
+#: bot\cogs\util\react.py:284
+msgid "反應類型"
+msgstr "reaction-type"
+
+#: bot\cogs\util\react.py:178 bot\cogs\util\react.py:253
+#: bot\cogs\util\react.py:285
+msgid "反應的類型"
+msgstr "type-of-reaction"
+
+#: bot\cogs\util\react.py:184
+msgid "關鍵詞類型"
+msgstr "keyword-type"
+
+#: bot\cogs\util\react.py:186
+msgid "關鍵詞的類型"
+msgstr "Type of keyword"
+
+#: bot\cogs\util\react.py:192
+msgid "關鍵詞規則"
+msgstr "keyword-rule"
+
+#: bot\cogs\util\react.py:193
+msgid "關鍵詞的規則"
+msgstr "Rule for the keyword"
+
+#: bot\cogs\util\react.py:199
+msgid "關鍵詞"
+msgstr "keyword"
+
+#: bot\cogs\util\react.py:200
+msgid "觸發反應的關鍵詞"
+msgstr "Keyword that triggers the reaction"
+
+#: bot\cogs\util\react.py:207
+msgid "偵測到關鍵詞後的反應"
+msgstr "Reaction when keyword is detected"
+
+#: bot\cogs\util\react.py:246
+msgid "列出所有反應"
+msgstr "list-all-reactions"
+
+#: bot\cogs\util\react.py:247
+msgid "列出機器人對群組訊息的所有反應"
+msgstr "List all bot reactions for group messages"
+
+#: bot\cogs\util\react.py:278
+msgid "移除反應"
+msgstr "remove-reaction"
+
+#: bot\cogs\util\react.py:279
+msgid "移除選定的反應"
+msgstr "Remove the selected reaction"
+
+#: bot\cogs\util\react.py:292
+msgid "要移除的反應"
+msgstr "reaction-to-remove"
+
+#: bot\cogs\util\toys.py:12
+msgid "小工具"
+msgstr "Toys"
+
+#: bot\cogs\util\toys.py:15
+msgid "擲骰"
+msgstr "roll-dice"
+
+#: bot\cogs\util\toys.py:16
+msgid "擲個運氣☘️"
+msgstr "Try your luck ☘️"
+
+#: bot\cogs\util\toys.py:21
+msgid "骰子數"
+msgstr "number-of-dice"
+
+#: bot\cogs\util\toys.py:23
+msgid "骰子數量(最大值25)"
+msgstr "Number of dice (max 25)"
+
+#: bot\cogs\util\toys.py:28
+msgid "面數"
+msgstr "sides"
+
+#: bot\cogs\util\toys.py:30
+msgid "骰子面數(最大值100)"
+msgstr "Number of sides per die (max 100)"
+
+#: bot\cogs\util\weather.py:21
+msgid "氣象"
+msgstr "Weather"
+
+#: bot\cogs\util\weather.py:130
+msgid "地震報告頻道"
+msgstr "earthquake-report-channel"
+
+#: bot\cogs\util\weather.py:131
+msgid "設定接收地震報告的頻道"
+msgstr "Set the channel to receive earthquake reports"
+
+#: bot\cogs\util\weather.py:136
+msgid "頻道"
+msgstr "channel"
+
+#: bot\cogs\util\weather.py:138
+msgid "接收報告的頻道"
+msgstr "Channel to receive reports"
+
+#: bot\cogs\util\weather.py:147
+msgid "地震通知級數"
+msgstr "earthquake-magnitude"
+
+#: bot\cogs\util\weather.py:148
+msgid "設定地震通知級數"
+msgstr "Set the earthquake notification magnitude"
+
+#: bot\cogs\util\weather.py:153
+msgid "級數"
+msgstr "magnitude"
+
+#: bot\cogs\util\weather.py:155
+msgid "當大於報告級數開啟訊息通知(1.0 ~ 9.0)"
+msgstr "Enable message notifications when magnitude exceeds the set threshold (1.0 ~ 9.0)"
+
+#~ msgid "請先加入伺服器語音頻道再使用此指令。"
+#~ msgstr "Please join a guild voice channel first before using this command."
+
+#~ msgid "請先加入語音頻道再使用此指令。"
+#~ msgstr "Please join a voice channel first before using this command."
+
+#~ msgid "無法加入此語音頻道。請再試一次。"
+#~ msgstr "I was unable to join this voice channel. Please try again."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "`此歌曲由 {source} 推薦`"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "`This track was recommended via {source}`"
+
+#~ msgid "搜尋詞"
+#~ msgstr "search-term"
+
+#~ msgid "推薦列表"
+#~ msgstr "recommended list"
