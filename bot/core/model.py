@@ -6,6 +6,7 @@ from typing import Any, Optional, Type, Generator, TypeVar
 
 from sqlmodel import SQLModel, select, create_engine, Session as SQLModelSession
 
+
 T = TypeVar("T", bound=SQLModel)
 
 
@@ -35,6 +36,32 @@ class Database:
 
         if self.auto_commit:
             session.commit()
+    
+    @contextlib.contextmanager
+    def config(self) -> Generator[dict[str, str], None, None]:
+        from bot.models.botConfig_model import BotConfig
+
+        session = self.session or SQLModelSession(Database.database_engine)
+        statement = select(BotConfig)
+    
+        config_list = session.exec(statement).all() or []
+        config_dict = dict(map(lambda x: (x.key, x.value), config_list))
+
+        yield config_dict
+
+        for key, value in config_dict.items():
+            statement = select(BotConfig).where(BotConfig.key == key)
+            
+            if (_config := session.exec(statement).first()) is None:
+                session.add(BotConfig(key=key, value=value))
+            else:
+                _config.value = value
+                config_list.remove(_config)
+        
+        for config in config_list:
+            session.delete(config)
+
+        session.commit()
 
     
     def __enter__(self):
