@@ -126,7 +126,7 @@ class AiChatCog(BaseCog, name="對話"):
 
         if message.author == bot.user:
             return
-        print(bot.user.mentioned_in(message), message.mentions, message.content)
+
         if bot.user.mentioned_in(message) or ("<@&1435152110747648071>" in message.content):
             async with message.channel.typing():
                 tone_style_prompt: str = "無特定語氣風格"
@@ -234,7 +234,6 @@ class AiChatCog(BaseCog, name="對話"):
                 )
 
             message = (message.reference.resolved or message.reference.cached_message) if message.reference else None
-        print(messages[::-1])
         return messages[::-1]
 
     async def get_website_metadata(self, url: str) -> dict[str, str]:
