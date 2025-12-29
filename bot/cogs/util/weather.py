@@ -36,11 +36,6 @@ class WeatherCog(BaseCog, name="氣象"):
             yield report_conf
 
     @tasks.loop(minutes=30)
-    @earthquake_report.before_loop
-    async def before_earthquake_report(self):
-        await self.bot.wait_until_ready()
-
-    @tasks.loop(minutes=30)
     async def earthquake_report(self):
         self.bot.log.info("地震報告任務已觸發 (Iter start)")
         with self.database() as database:
@@ -85,8 +80,6 @@ class WeatherCog(BaseCog, name="氣象"):
                         magnitude_value=report_data["EarthquakeInfo"]["EarthquakeMagnitude"]["MagnitudeValue"],
                         reported=False
                     )
-                    if last_report:
-                         self.bot.log.info(f"比對資料: DB最後時間={last_report.origin_time} vs API最新時間={report.origin_time} => Skip? {last_report.origin_time >= report.origin_time}")
                     
                     if last_report and last_report.origin_time >= report.origin_time:
                         continue
@@ -106,32 +99,38 @@ class WeatherCog(BaseCog, name="氣象"):
             statement = select(model.EarthquakeReportGuildConfig)
             guilds_report_conf = database.session.exec(statement).all()
 
-            if not push_report:
-                return
-            embeds_push_queue = []
-            for report in push_report[::-1]:
-                embeds_push_queue.append(report.create_earthquake_report_embed())
-                report.reported = True
-            database.session.commit()
-                        
-            for guild in self.bot.guilds:
-                guild_filter = filter(lambda report_conf: report_conf.guild_id == guild.id, guilds_report_conf)
-                if (report_conf := next(guild_filter, None)) is not None:
-                    if push_report and report_conf.push_channel_id and (channel := guild.get_channel(report_conf.push_channel_id)):
-                        for embed in embeds_push_queue:
-                            silent = True
-                            if report.magnitude_value > report_conf.silent_threshold:
-                                silent = False
-                            if embed.timestamp < datetime.now(tz=timezone(offset=timedelta())) - timedelta(minutes=60):
-                                silent = True
+            if push_report:
+                embeds_push_queue = []
+                for report in push_report[::-1]:
+                    embeds_push_queue.append(report.create_earthquake_report_embed())
+                    report.reported = True
+                database.session.commit()
                             
-                            await channel.send(embed=embed, silent=silent)
-                else:
-                    new_report_conf = model.EarthquakeReportGuildConfig(guild_id=guild.id, channel_id=None)
-                    database.session.add(new_report_conf)
-                    database.session.commit()
+                for guild in self.bot.guilds:
+                    guild_filter = filter(lambda report_conf: report_conf.guild_id == guild.id, guilds_report_conf)
+                    if (report_conf := next(guild_filter, None)) is not None:
+                        if push_report and report_conf.push_channel_id and (channel := guild.get_channel(report_conf.push_channel_id)):
+                            for embed in embeds_push_queue:
+                                silent = True
+                                if report.magnitude_value > report_conf.silent_threshold:
+                                    silent = False
+                                if embed.timestamp < datetime.now(tz=timezone(offset=timedelta())) - timedelta(minutes=60):
+                                    silent = True
+                                
+                                await channel.send(embed=embed, silent=silent)
+                    else:
+                        new_report_conf = model.EarthquakeReportGuildConfig(guild_id=guild.id, channel_id=None)
+                        database.session.add(new_report_conf)
+                        database.session.commit()
+            else:
+                self.bot.log.info("沒有新的地震報告")
         
         self.bot.log.info("地震報告任務結束 (Iter end)")
+
+    @tasks.loop(minutes=30)
+    @earthquake_report.before_loop
+    async def before_earthquake_report(self):
+        await self.bot.wait_until_ready()
     
     @earthquake_report.error
     async def earthquake_report_error(self, error: Exception) -> None:
