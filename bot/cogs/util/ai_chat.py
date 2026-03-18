@@ -2,6 +2,7 @@ from email.policy import default
 import os
 
 from typing import Optional
+from datetime import timezone, datetime
 
 import discord
 import openai
@@ -132,7 +133,7 @@ class AiChatCog(BaseCog, name="對話"):
                 tone_style_prompt: str = "無特定語氣風格"
                 persona_prompt: str = "無特定角色"
                 default_language: str = "zh-tw"
-                # has_link: bool = "http://" in message.content or "https://" in message.content
+
                 if message.guild:
                     with Database() as database, database.guild_config(message.guild.id, AiChatGuildConfig, ensure=True, init_kwargs={}) as guild_config:
                         tone_style = database.session.exec(
@@ -170,6 +171,7 @@ class AiChatCog(BaseCog, name="對話"):
                         *await self.gen_context_messages(message),
                     ],
                 )
+                print(message.guild, message.guild.id if message.guild else None, message.author, message.content)
                 await message.reply(content=response.choices[0].message.content)
 
     async def gen_context_messages(self, message: discord.Message) -> list[dict[str, str]]:
@@ -178,6 +180,16 @@ class AiChatCog(BaseCog, name="對話"):
         message: discord.Message
 
         messages = []
+
+        async def get_attachments(message: discord.Message, content_types: list[str]) -> list[discord.Attachment]:
+            attachments = []
+            for attachment in message.attachments:
+                if attachment.expires_at and attachment.expires_at.replace(tzinfo=timezone.utc) > datetime.now(timezone.utc):
+                    attachments.append(attachment)
+                else:
+                    message = await message.channel.fetch_message(message.id)
+                    return await get_attachments(message, content_types)
+            return attachments
 
         while (message != None):
             is_bot = message.author == self.bot.user
@@ -207,11 +219,12 @@ class AiChatCog(BaseCog, name="對話"):
                                     "image_url": {
                                         "url": attachment.url,
                                     }
-                                } for attachment in message.attachments if attachment.content_type in supported_content_types
+                                } for attachment in await get_attachments(message, supported_content_types)
                             ]
                         ],
                     }
                 )
+
             if message.stickers:
                 stickers = []
                 for sticker in message.stickers:
