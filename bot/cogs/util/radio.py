@@ -50,7 +50,7 @@ class RadioCog(BaseCog, name="收音機"):
                 self.bot.log.info("取得收音機站點資料成功")
                 data: dict[str, any] = resp.json()
 
-                with Database(auto_commit=False) as db, db.config() as config:
+                with Database(auto_commit=False) as db, db.bot_config() as config:
                     if config.get("radio_data_version") == data["version"]:
                         self.bot.log.info(f"收音機站點資料版本未更新 版本: {data['version']}")
                         return
