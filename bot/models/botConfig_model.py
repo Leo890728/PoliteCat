@@ -2,7 +2,7 @@ from sqlmodel import Field, SQLModel
 
 
 class BotConfig(SQLModel, extend_existing=True, table=True):
-    __tablename__ = "bot_config"
+    __tablename__ = "BotConfig"
 
     key: str = Field(primary_key=True, unique=True)
     value: str = Field(default="")
@@ -40,7 +40,7 @@ class TrackedDict(dict):
     def update(self, *args, **kwargs):
         for k, v in dict(*args, **kwargs).items():
             self[k] = v
-            
+
     def pop(self, *args, **kwargs):
         raise NotImplementedError("TrackedDict does not support pop(). Use 'del' instead.")
 

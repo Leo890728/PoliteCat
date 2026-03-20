@@ -7,8 +7,6 @@ from typing import Any, Optional, Type, Generator, TypeVar, List
 from sqlmodel import SQLModel, select, create_engine, Session as SQLModelSession
 from sqlalchemy import ScalarResult
 
-from bot.models.botConfig_model import BotConfig, TrackedDict
-
 
 T = TypeVar("T", bound=SQLModel)
 
@@ -56,7 +54,8 @@ class Database:
 
     @contextlib.contextmanager
     def bot_config(self) -> Generator[dict[str, str], None, None]:
-
+        from bot.models.botConfig_model import BotConfig, TrackedDict
+        
         result: Optional[List[BotConfig]] = self._get_config_context(filters=None, config_model=BotConfig, first=False)
     
         config_list = result or []
